@@ -1,5 +1,5 @@
 /* global preloadImagesTmr fxhash fxrand paper1Loaded */
-
+// oo5kCzA1fcHTPdxVEVBiAkRabH6bLfSQ18St4nFup2GGQDNe3Lp
 //
 //  fxhash - Kiss Me Kiss Me Kiss Me
 //
@@ -45,7 +45,7 @@ const makeFeatures = () => {
   const kissColours = ['#6B1344', '#ECA81B', '#BA1D11', '#021902', '#0D443E', '#111111', '#051A4C']
   const backgroundColours = ['#D698B9', '#E9CF0E', '#C0312B', '#8CB951', '#A8D4ED', '#99ABB3', '#0D67A8']
   features.kisses = []
-  features.allFlat = (fxrand() < 0.1 && kisses > 1)
+  features.allFlat = fxrand() < 0.1
   features.allColour = (fxrand() < 0.1 && kisses > 1)
   features.allMonochrome = (fxrand() < 0.1 && kisses > 1)
 
@@ -94,6 +94,7 @@ const makeFeatures = () => {
   window.$fxhashFeatures['Forced all Level'] = features.allFlat
   window.$fxhashFeatures['Forced all Colour'] = features.allColour
   window.$fxhashFeatures['Forced all Monochrome'] = features.allMonochrome
+  // if (features.kisses.length > 1 || features.allFlat === false || features.kisses[0].bottom.type !== 'flat' || features.kisses[0].leftRight > 0 || features.kisses[0].upDown < 0.08 || features.kisses[0].colour !== 'black' || features.kisses[0].background !== null) location.reload()
 }
 
 //  Call the above make features, so we'll have the window.$fxhashFeatures available
@@ -257,7 +258,7 @@ const drawCanvas = async () => {
       const topRadius = kiss.top.radius * (h / kissesDown) * 1.5
       // Draw the top kiss as a circle
       ctx.beginPath()
-      ctx.arc(0, -topRadius - (h / 5000), topRadius, 0, 2 * Math.PI)
+      ctx.arc(0, -topRadius - (h / 3000), topRadius, 0, 2 * Math.PI)
       // Fill the circle
       ctx.fill()
 
